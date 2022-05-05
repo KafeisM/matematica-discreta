@@ -58,7 +58,7 @@ class Entrega {
         BiPredicate<Integer, Integer> p,
         Predicate<Integer> q,
         Predicate<Integer> r) {
-
+            int x;
       return false; // TO DO
     }
 
