@@ -57,9 +57,26 @@ class Entrega {
         int[] universe,
         BiPredicate<Integer, Integer> p,
         Predicate<Integer> q,
-        Predicate<Integer> r) {
+        Predicate<Integer> r) { 
             
-      return false; // TO DO
+            boolean res = true;
+
+            for(int x : universe){
+                for(int y : universe){
+                    if(p.test(x, y)){
+                        res = (q.test(x) && r.test(y));
+
+                        if(!res){
+                            System.out.println(res);
+                            return res;
+                        }
+                    }
+                }
+            }
+
+            
+      System.out.println(res);
+      return res; // HECHO
     }
 
     /*
@@ -360,7 +377,7 @@ class Entrega {
    */
   public static void main(String[] args) {
     Tema1.tests();
-    Tema2.tests();
+    //Tema2.tests();
   }
 
   static void assertThat(boolean b) {
