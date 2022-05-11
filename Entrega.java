@@ -83,7 +83,7 @@ class Entrega {
      * És cert que ∃!x. ∀y. Q(y) -> P(x) ?
      */
     static boolean exercici2(int[] universe, Predicate<Integer> p, Predicate<Integer> q) {
-      return false; // TO DO
+      return true; // TO DO
     }
 
     /*
@@ -98,7 +98,7 @@ class Entrega {
         boolean res = false;
         for (int[] y : universe) {
             for (int[] x : universe) {
-                if(x.length <= y.length){
+                if(x.length < y.length){
                     existe = false;
                 }else{
                     int n = 0;
@@ -106,7 +106,6 @@ class Entrega {
                         for (int j = 0; j < x.length; j++) {
                             if(y[i] == x[j]){
                                 n++;
-                                break;
                             }
                         }
                         if(n == y.length){
@@ -120,7 +119,7 @@ class Entrega {
             }
             if(!existe){
                 res = false;
-                System.out.println(res);
+                System.out.println(!res);
                 return !res;
             }else{
                 res = true;
@@ -128,7 +127,7 @@ class Entrega {
             
 
         }
-        System.out.println(res);
+        System.out.println(!res);
         return !res; // POR REVISAR
 
     }
@@ -177,7 +176,7 @@ class Entrega {
       );
 
       assertThat(
-          !exercici2(
+          exercici2(
               new int[] { 1, 2, 3, 4, 5, 6 },
               x -> x % 4 == 0, // x és múltiple de 4
               x -> x % 2 == 0  // x és múltiple de 2
