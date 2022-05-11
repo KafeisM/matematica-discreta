@@ -93,7 +93,44 @@ class Entrega {
      * que cada un d'ells està ordenat de menor a major.
      */
     static boolean exercici3(int[][] universe) {
-      return false; // TO DO
+        boolean existe = false;
+
+        boolean res = false;
+        for (int[] y : universe) {
+            for (int[] x : universe) {
+                if(x.length <= y.length){
+                    existe = false;
+                }else{
+                    int n = 0;
+                    for (int i = 0; i < y.length && n != y.length; i++) {
+                        for (int j = 0; j < x.length; j++) {
+                            if(y[i] == x[j]){
+                                n++;
+                                break;
+                            }
+                        }
+                        if(n == y.length){
+                            existe = true;
+                            break;
+                        }else{
+                            existe = false;
+                        }
+                    }
+                }
+            }
+            if(!existe){
+                res = false;
+                System.out.println(res);
+                return !res;
+            }else{
+                res = true;
+            }
+            
+
+        }
+        System.out.println(res);
+        return !res; // POR REVISAR
+
     }
 
     /*
