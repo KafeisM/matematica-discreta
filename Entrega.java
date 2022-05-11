@@ -158,7 +158,8 @@ class Entrega {
                 }
             }
 
-            if (cont == 1) {
+            //comprovar que ∀x. ∃!y
+            if (cont == universe.length) {
                 res = true;
             }
 
@@ -415,7 +416,6 @@ class Entrega {
      * sigui `true`.
      */
     public static void main(String[] args) {
-        System.out.println(2 % 7);
         Tema1.tests();
         // Tema2.tests();
     }
