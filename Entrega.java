@@ -260,6 +260,14 @@ class Entrega {
          * tant `a` com cada un dels elements de `p` està ordenat de menor a major.
          */
         static boolean exercici1(int[] a, int[][] p) {
+                int tam = a.length;
+                boolean[] existe = new boolean[tam];
+
+                for (int ax: a) {
+                    
+                }
+            
+
             return false; // TO DO
         }
 
