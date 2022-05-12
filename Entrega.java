@@ -144,63 +144,54 @@ class Entrega {
          * És cert que ∀x. ∃!y. x·y ≡ 1 (mod n) ?
          */
         static boolean exercici4(int[] universe, int n) {
-            int cont = 0;
-            boolean [] flags = new boolean [universe.length];
+
+            boolean[] flags = new boolean[universe.length];
             int aux = 0;
             boolean res = false;
-            boolean unico = false;
+            int cont = 0;
+            boolean esunic = true;
 
             // operacio com a ≡ b (mod n) <---> n|(a-b) <---> a mod n == b mod n
             int a = 0;
             int b = 1;
-            
+
             for (int i = 0; i < universe.length; i++) {
-                for (int y = 0; y < universe.length ; y++) {
+                for (int y = 0; y < universe.length; y++) {
                     a = universe[i] * universe[y];
     
                     if ((a % n) == (b % n)) {
-                        cont++;
                         flags[y] = true;
-                    }else{
-                        flags[y] = false;
+                        cont++;
                     }
                 }
-                
-                //comprovar si es ∃!y
+    
                 for (int k = 0; k < flags.length; k++) {
+    
                     if (flags[k] == true) {
                         aux++;
                     }
                 }
-
-                if (aux > 1) {
-                    unico = false;
-                    break;
-
-                } else if (aux == 0) {
-                    unico =  false;
-                    break;
-
-                }else if (aux == 1){
-                    unico = true;      
+    
+                if (aux != 1) {
+                    esunic = false;
                 }
-
-                //reiniciar els flags
-                for (int t = 0; t < flags.length; t++){
+    
+                // reiniciar los flags
+                for (int t = 0; t < flags.length; t++) {
                     flags[t] = false;
                 }
+                aux = 0;
     
             }
     
-            if(cont == universe.length && unico){
+            if((cont == universe.length) && (esunic) ){
                 res = true;
             }else{
                 res = false;
             }
 
-            System.out.println("Ejercicio 4: "+ res);
-            return res;  //REVISAR
-            
+            System.out.println("Ejercicio 4:" + res);
+            return res;
         }
 
         /*

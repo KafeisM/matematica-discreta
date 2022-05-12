@@ -8,11 +8,12 @@ public class Prueba {
         int n = 11;
         int b = 1;
         int a = 0;
-        int cont = 0;
         int aux = 0;
         boolean res = true;
+        boolean flag = true;
+        int cont = 0;
 
-        int universe[] = {  1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int universe[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         boolean flags[] = new boolean[universe.length];
 
         for (int i = 0; i < universe.length; i++) {
@@ -20,38 +21,36 @@ public class Prueba {
                 a = universe[i] * universe[y];
 
                 if ((a % n) == (b % n)) {
-                    cont++;
                     flags[y] = true;
-
+                    cont++;
                 }
             }
 
             for (int k = 0; k < flags.length; k++) {
+
                 if (flags[k] == true) {
                     aux++;
                 }
-
-                if (aux > 1) {
-                    res = false;
-                    break;
-
-                } else if (aux == 0) {
-                    res =  false;
-                    break;
-
-                }
             }
-        
-            //reiniciar los flags
-            for (int t = 0; t < flags.length; t++){
+
+            if (aux != 1) {
+                flag = false;
+            }
+
+            // reiniciar los flags
+            for (int t = 0; t < flags.length; t++) {
                 flags[t] = false;
             }
+            aux = 0;
 
         }
 
-        if(cont == universe.length){
+        if((cont == universe.length) && (flag) ){
             res = true;
+        }else{
+            res = false;
         }
+
         return res;
     }
 }
