@@ -155,13 +155,14 @@ class Entrega {
             int b = 1;
             
             for (int i = 0; i < universe.length; i++) {
-                for (int y = 0; y < universe.length; y++) {
+                for (int y = 0; y < universe.length ; y++) {
                     a = universe[i] * universe[y];
     
                     if ((a % n) == (b % n)) {
                         cont++;
                         flags[y] = true;
-    
+                    }else{
+                        flags[y] = false;
                     }
                 }
                 
@@ -174,12 +175,14 @@ class Entrega {
 
                 if (aux > 1) {
                     unico = false;
+                    break;
 
                 } else if (aux == 0) {
                     unico =  false;
+                    break;
 
                 }else if (aux == 1){
-                    unico = true;
+                    unico = true;      
                 }
 
                 //reiniciar els flags

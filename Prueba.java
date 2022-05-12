@@ -5,14 +5,14 @@ public class Prueba {
     }
 
     public static boolean Ejercicio4() {
-        int n = 13;
+        int n = 11;
         int b = 1;
         int a = 0;
         int cont = 0;
         int aux = 0;
         boolean res = true;
 
-        int universe[] = { 0, 5, 7 };
+        int universe[] = {  1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         boolean flags[] = new boolean[universe.length];
 
         for (int i = 0; i < universe.length; i++) {
