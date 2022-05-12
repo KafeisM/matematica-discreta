@@ -5,6 +5,9 @@ import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
+
+import javax.annotation.processing.SupportedOptions;
+
 import java.util.Set;
 
 /*
@@ -142,30 +145,59 @@ class Entrega {
          */
         static boolean exercici4(int[] universe, int n) {
             int cont = 0;
-            boolean res = false;
+            boolean [] flags = new boolean [universe.length];
+            int aux = 0;
+            boolean res = true;
+            boolean unico = false;
+
             // operacio com a ≡ b (mod n) <---> n|(a-b) <---> a mod n == b mod n
-            int a;
+            int a = 0;
             int b = 1;
-            int op;
-
-            for (int i : universe) {
-                for (int j : universe) {
-                    a = i * j;
-
+            
+            for (int i = 0; i < universe.length; i++) {
+                for (int y = 0; y < universe.length; y++) {
+                    a = universe[i] * universe[y];
+    
                     if ((a % n) == (b % n)) {
                         cont++;
+                        flags[y] = true;
+    
                     }
                 }
-            }
+                
+                //comprovar si es ∃!y
+                for (int k = 0; k < flags.length; k++) {
+                    if (flags[k] == true) {
+                        aux++;
+                    }
+    
+                    if (aux > 1) {
+                        return false;
+                        
+    
+                    } else if (aux == 0) {
+                        return  false;
+                        
+    
+                    }else{
+                        unico = true;
+                    }
 
-            // comprovar que ∀x. ∃!y
-            if (cont == universe.length) {
+                }
+            
+                //reiniciar els flags
+                for (int t = 0; t < flags.length; t++){
+                    flags[t] = false;
+                }
+    
+            }
+    
+            if(cont == universe.length && unico){
                 res = true;
             }
-
-            System.out.println("Ejercicio 4" + "\n" + res);
-
-            return res; // REVISAR
+            System.out.println("Ejercicio 4: "+ res);
+            return res;  //REVISAR
+            
         }
 
         /*
@@ -267,31 +299,31 @@ class Entrega {
             }
             boolean res;
             int i = 0;
-            int min = a[0], max = a[tam-1];
-            for (int ax: a) {
+            int min = a[0], max = a[tam - 1];
+            for (int ax : a) {
                 boolean existe = false;
                 for (int[] px : p) {
                     for (int ppx : px) {
-                        if(ppx >= min && ppx <= max){
-                            if(ax == ppx){
+                        if (ppx >= min && ppx <= max) {
+                            if (ax == ppx) {
                                 existe = true;
-                                if(!usado[i]){
+                                if (!usado[i]) {
                                     usado[i] = true;
-                                }else{
+                                } else {
                                     res = false;
                                     System.out.println(res);
                                     return res;
-                                }    
+                                }
                                 break;
                             }
-                        }else{
+                        } else {
                             res = false;
                             System.out.println(res);
                             return res;
                         }
                     }
                 }
-                if(!existe){
+                if (!existe) {
                     res = false;
                     System.out.println(res);
                     return res;
@@ -301,7 +333,7 @@ class Entrega {
 
             res = true;
             System.out.println(res);
-            return res; //HECHO
+            return res; // HECHO
         }
 
         /*
