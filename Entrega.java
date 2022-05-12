@@ -147,7 +147,7 @@ class Entrega {
             int cont = 0;
             boolean [] flags = new boolean [universe.length];
             int aux = 0;
-            boolean res = true;
+            boolean res = false;
             boolean unico = false;
 
             // operacio com a ≡ b (mod n) <---> n|(a-b) <---> a mod n == b mod n
@@ -170,21 +170,18 @@ class Entrega {
                     if (flags[k] == true) {
                         aux++;
                     }
-    
-                    if (aux > 1) {
-                        return false;
-                        
-    
-                    } else if (aux == 0) {
-                        return  false;
-                        
-    
-                    }else{
-                        unico = true;
-                    }
-
                 }
-            
+
+                if (aux > 1) {
+                    unico = false;
+
+                } else if (aux == 0) {
+                    unico =  false;
+
+                }else if (aux == 1){
+                    unico = true;
+                }
+
                 //reiniciar els flags
                 for (int t = 0; t < flags.length; t++){
                     flags[t] = false;
@@ -194,7 +191,10 @@ class Entrega {
     
             if(cont == universe.length && unico){
                 res = true;
+            }else{
+                res = false;
             }
+
             System.out.println("Ejercicio 4: "+ res);
             return res;  //REVISAR
             
