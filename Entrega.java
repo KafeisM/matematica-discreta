@@ -143,22 +143,22 @@ class Entrega {
         static boolean exercici4(int[] universe, int n) {
             int cont = 0;
             boolean res = false;
-            //operacio com a ≡ b (mod n) <---> n|(a-b) <---> a mod n == b mod n
+            // operacio com a ≡ b (mod n) <---> n|(a-b) <---> a mod n == b mod n
             int a;
             int b = 1;
             int op;
 
             for (int i : universe) {
                 for (int j : universe) {
-                    a = i*j;
-                    
-                    if((a%n) == (b%n)){
+                    a = i * j;
+
+                    if ((a % n) == (b % n)) {
                         cont++;
                     }
                 }
             }
 
-            //comprovar que ∀x. ∃!y
+            // comprovar que ∀x. ∃!y
             if (cont == universe.length) {
                 res = true;
             }
@@ -260,15 +260,48 @@ class Entrega {
          * tant `a` com cada un dels elements de `p` està ordenat de menor a major.
          */
         static boolean exercici1(int[] a, int[][] p) {
-                int tam = a.length;
-                boolean[] existe = new boolean[tam];
-
-                for (int ax: a) {
-                    
+            int tam = a.length;
+            boolean[] usado = new boolean[tam];
+            for (int i = 0; i < tam; i++) {
+                usado[i] = false;
+            }
+            boolean res;
+            int i = 0;
+            int min = a[0], max = a[tam-1];
+            for (int ax: a) {
+                boolean existe = false;
+                for (int[] px : p) {
+                    for (int ppx : px) {
+                        if(ppx >= min && ppx <= max){
+                            if(ax == ppx){
+                                existe = true;
+                                if(!usado[i]){
+                                    usado[i] = true;
+                                }else{
+                                    res = false;
+                                    System.out.println(res);
+                                    return res;
+                                }    
+                                break;
+                            }
+                        }else{
+                            res = false;
+                            System.out.println(res);
+                            return res;
+                        }
+                    }
                 }
-            
+                if(!existe){
+                    res = false;
+                    System.out.println(res);
+                    return res;
+                }
+                i++;
+            }
 
-            return false; // TO DO
+            res = true;
+            System.out.println(res);
+            return res; //HECHO
         }
 
         /*
@@ -425,7 +458,7 @@ class Entrega {
      */
     public static void main(String[] args) {
         Tema1.tests();
-        // Tema2.tests();
+        Tema2.tests();
     }
 
     static void assertThat(boolean b) {
