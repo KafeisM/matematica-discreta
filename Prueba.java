@@ -1,7 +1,26 @@
+import java.util.function.Predicate;
+
 public class Prueba {
     public static void main(String[] args) {
         System.out.println(Ejercicio4());
+        System.out.println(prueba());
 
+    }
+
+    public static boolean prueba(){
+
+        boolean res = true;
+        Predicate<Integer> p;
+        Predicate<Integer> q;
+        int [] universe = new int[] { 1, 2, 3, 4, 5, 6 };
+        p = x -> x % 4 == 0; // x és múltiple de 4
+        q = x -> x % 2 == 0; // x és múltiple de 2
+        for (int x = 0; x < universe.length; x++) {
+            System.out.println(universe[x]);
+        }    
+
+
+        return res;
     }
 
     public static boolean Ejercicio4() {
