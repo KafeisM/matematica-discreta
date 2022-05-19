@@ -98,7 +98,6 @@ class Entrega {
             int auxiliar = 0;
             int contador = 0;
             boolean [] arr = new boolean[universe.length];
-            int [] registro = new int[universe.length];
 
             for (int x = 0; x < universe.length; x++){
                 aux = p.test(x);
@@ -135,7 +134,7 @@ class Entrega {
             }
 
 
-            System.out.println(res);
+            System.out.println("Ejercicio 2: " + res);
             return res; // TO DO
         }
 
