@@ -271,7 +271,7 @@ class Entrega {
                             x -> true));
 
             assertThat(
-                    exercici2(
+                    !exercici2(
                             new int[] { 1, 2, 3, 4, 5, 6 },
                             x -> x % 4 == 0, // x és múltiple de 4
                             x -> x % 2 == 0 // x és múltiple de 2
