@@ -76,7 +76,7 @@ class Entrega {
                         res = (q.test(x) && r.test(y));
 
                         if (!res) {
-                            System.out.println(res);
+                            System.out.println("Ejercicio 1: " + res);
                             return res;
                         }
                     }
@@ -98,7 +98,7 @@ class Entrega {
 
             for(int x = 0; x < universe.length; x++){
                 for(int y = 0; y < universe.length; y++){
-                    if(!(q.test(y) && (p.test(x) == false))){
+                    if(!(q.test(universe[y]) && (p.test(universe[x]) == false))){
                         contador++;
                     }
                 }
@@ -106,7 +106,6 @@ class Entrega {
                 if(contador == universe.length){
                     aux++;
                 }
-
                 contador = 0;
 
                 if(aux > 1){
@@ -116,11 +115,9 @@ class Entrega {
                 }
                 
             }
-
             if(aux == 0){
                 res = false;
             }
-
             System.out.println("Ejercicio 2: " + res);
             return res; // TO DO
         }
