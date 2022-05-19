@@ -83,21 +83,21 @@ class Entrega {
                 }
             }
 
-            System.out.println(res);
+            System.out.println("Ejercicio 1: " + res);
             return res; // HECHO
         }
 
         /*
-         * És cert que ∃!x. ∀y. Q(y) -> P(x) ? ---> ∃!y. ∀x. Q(y) -> P(x) 
+         * És cert que ∃!x. ∀y. Q(y) -> P(x) ? 
          */
-        static boolean exercici2(int[] universe, Predicate<Integer> q, Predicate<Integer> p) {
+        static boolean exercici2(int[] universe, Predicate<Integer> p, Predicate<Integer> q) {
 
-            boolean res = false;
+            boolean res = true;
             int contador = 0;
             int aux = 0;
 
-            for(int y = 0; y < universe.length; y++){
-                for(int x = 0; x < universe.length; x++){
+            for(int x = 0; x < universe.length; x++){
+                for(int y = 0; y < universe.length; y++){
                     if(!(q.test(y) && (p.test(x) == false))){
                         contador++;
                     }
@@ -106,13 +106,19 @@ class Entrega {
                 if(contador == universe.length){
                     aux++;
                 }
-                
+
                 contador = 0;
+
+                if(aux > 1){
+                    res = false;
+                    System.out.println("Ejercicio 2: " + res);
+                    return res;
+                }
                 
             }
 
-            if(aux == 1){
-                res = true;
+            if(aux == 0){
+                res = false;
             }
 
             System.out.println("Ejercicio 2: " + res);
@@ -153,14 +159,14 @@ class Entrega {
                 }
                 if (!existe) {
                     res = false;
-                    System.out.println(!res);
+                    System.out.println("Ejercicio 3: " + !res);
                     return !res;
                 } else {
                     res = true;
                 }
 
             }
-            System.out.println(!res);
+            System.out.println("Ejercicio 3: " + !res);
             return !res; // POR REVISAR
 
         }
