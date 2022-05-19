@@ -88,51 +88,32 @@ class Entrega {
         }
 
         /*
-         * És cert que ∃!x. ∀y. Q(y) -> P(x) ?
+         * És cert que ∃!x. ∀y. Q(y) -> P(x) ? ---> ∃!y. ∀x. Q(y) -> P(x) 
          */
         static boolean exercici2(int[] universe, Predicate<Integer> q, Predicate<Integer> p) {
 
-            boolean res = true;
-            boolean aux;
-            boolean aux2;
-            int auxiliar = 0;
+            boolean res = false;
             int contador = 0;
-            boolean [] arr = new boolean[universe.length];
+            int aux = 0;
 
-            for (int x = 0; x < universe.length; x++){
-                aux = q.test(x);
-                for (int y = 0; y < universe.length; y++){
-                    if (!aux){
-                        aux2 = p.test(y);
-                        if(!aux2){
-                            contador++;
-                        }
-                    } else {
+            for(int y = 0; y < universe.length; y++){
+                for(int x = 0; x < universe.length; x++){
+                    if(!(q.test(y) && (p.test(x) == false))){
                         contador++;
-                    }                    
+                    }
+                }
+
+                if(contador == universe.length){
+                    aux++;
                 }
                 
-                if (contador == universe.length){
-                    arr[x] = true;
-                }else{
-                    arr[x] = false;
-                }
                 contador = 0;
-
+                
             }
 
-            for (int i = 0; i< arr.length; i++){
-                if(arr[i] == true){
-                    auxiliar++;
-                }
-            }
-
-            if(auxiliar == 1){
+            if(aux == 1){
                 res = true;
-            }else {
-                res = false;
             }
-
 
             System.out.println("Ejercicio 2: " + res);
             return res; // TO DO

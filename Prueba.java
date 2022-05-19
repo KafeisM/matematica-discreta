@@ -4,7 +4,7 @@ public class Prueba {
     public static void main(String[] args) {
         System.out.println(Ejercicio4());
         System.out.println(prueba());
-
+        
     }
 
     public static boolean prueba(){
