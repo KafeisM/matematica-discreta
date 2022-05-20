@@ -11,7 +11,7 @@ public class Prueba {
         int res = -1;
         int major;
         int menor;
-        int aux1 = 0;
+ 
 
         if(a > b){
             major = a;
@@ -26,16 +26,11 @@ public class Prueba {
             major = menor;
             menor = res;
 
-            if(res == 0){
-                res = aux1;
-                return res;
-            }
-            
-            aux1 = res;
+             
             
         }   
 
-      return res; // TO DO
+      return menor; // TO DO
     }
 
     public static boolean prueba(){
