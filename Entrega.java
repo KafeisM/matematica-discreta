@@ -507,11 +507,12 @@ class Entrega {
          * Podeu suposar que `a` i `b` són positius.
          */
         static int exercici1(int a, int b) {
-            int res = -1;
+            int res = 0;
+            int aux = -1;
             int major;
             int menor;
-            int aux;
-
+     
+    
             if(a > b){
                 major = a;
                 menor = b;
@@ -520,14 +521,20 @@ class Entrega {
                 menor = a;
             }
             
-            while(res != 0){
+            while(aux != 0){
                 aux = major % menor;
                 major = menor;
-                menor = aux;
-                res = aux;
+    
+                if(aux == 0){
+                    res =  menor;
+                }
+    
+                menor = aux; 
             }   
 
-          return res; // TO DO
+            System.out.println("Ejercicio 1: " + res);
+    
+          return res; // HECHO
         }
     
         /*
@@ -536,7 +543,40 @@ class Entrega {
          * Podeu suposar que `a`, `b` i `c` són positius.
          */
         static boolean exercici2(int a, int b, int c) {
-          return false; // TO DO
+            //veure si mcd(a,b)|c, si es divisor, te solució
+            boolean sol = false;
+            int res = 0;
+            int aux = -1;
+            int major;
+            int menor;
+     
+    
+            if(a > b){
+                major = a;
+                menor = b;
+            }else{
+                major = b;
+                menor = a;
+            }
+            
+            while(aux != 0){
+                aux = major % menor;
+                major = menor;
+    
+                if(aux == 0){
+                    res =  menor;
+                }
+    
+                menor = aux; 
+            }   
+            
+            if((c % res) == 0){
+                sol = true;
+            }
+
+            System.out.println("Ejercicio 2: " + sol);
+    
+          return sol; // HECHO
         }
     
         /*
@@ -590,8 +630,8 @@ class Entrega {
      * sigui `true`.
      */
     public static void main(String[] args) {
-        Tema1.tests();
-        Tema2.tests();
+        //Tema1.tests();
+        //Tema2.tests();
         Tema3.tests();
     }
 

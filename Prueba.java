@@ -4,11 +4,15 @@ public class Prueba {
     public static void main(String[] args) {
         //System.out.println(Ejercicio4());
         //System.out.println(prueba());
-        System.out.println(exercici1(2, 4));
+       // System.out.println(exercici1(5639, 3829));
+       System.out.println(exercici2(6, 2, 1));
     }
 
-    static int exercici1(int a, int b) {
-        int res = -1;
+    static boolean exercici2(int a, int b, int c) {
+        //veure si mcd(a,b)|c, si es divisor, te solució
+        boolean sol = false;
+        int res = 0;
+        int aux = -1;
         int major;
         int menor;
  
@@ -21,16 +25,52 @@ public class Prueba {
             menor = a;
         }
         
-        while(res != 0){
-            res = major % menor;
+        while(aux != 0){
+            aux = major % menor;
             major = menor;
-            menor = res;
 
-             
-            
+            if(aux == 0){
+                res =  menor;
+            }
+
+            menor = aux; 
+        }   
+        
+        if((c % res) == 0){
+            sol = true;
+        }
+
+      return sol; // HECHO
+    }
+
+
+    static int exercici1(int a, int b) {
+        int res = 0;
+        int aux = -1;
+        int major;
+        int menor;
+ 
+
+        if(a > b){
+            major = a;
+            menor = b;
+        }else{
+            major = b;
+            menor = a;
+        }
+        
+        while(aux != 0){
+            aux = major % menor;
+            major = menor;
+
+            if(aux == 0){
+                res =  menor;
+            }
+
+            menor = aux; 
         }   
 
-      return menor; // TO DO
+      return res; // HECHO
     }
 
     public static boolean prueba(){
