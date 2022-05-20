@@ -2,9 +2,40 @@ import java.util.function.Predicate;
 
 public class Prueba {
     public static void main(String[] args) {
-        System.out.println(Ejercicio4());
-        System.out.println(prueba());
+        //System.out.println(Ejercicio4());
+        //System.out.println(prueba());
+        System.out.println(exercici1(2, 4));
+    }
+
+    static int exercici1(int a, int b) {
+        int res = -1;
+        int major;
+        int menor;
+        int aux1 = 0;
+
+        if(a > b){
+            major = a;
+            menor = b;
+        }else{
+            major = b;
+            menor = a;
+        }
         
+        while(res != 0){
+            res = major % menor;
+            major = menor;
+            menor = res;
+
+            if(res == 0){
+                res = aux1;
+                return res;
+            }
+            
+            aux1 = res;
+            
+        }   
+
+      return res; // TO DO
     }
 
     public static boolean prueba(){

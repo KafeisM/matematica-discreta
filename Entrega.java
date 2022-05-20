@@ -507,7 +507,27 @@ class Entrega {
          * Podeu suposar que `a` i `b` són positius.
          */
         static int exercici1(int a, int b) {
-          return -1; // TO DO
+            int res = -1;
+            int major;
+            int menor;
+            int aux;
+
+            if(a > b){
+                major = a;
+                menor = b;
+            }else{
+                major = b;
+                menor = a;
+            }
+            
+            while(res != 0){
+                aux = major % menor;
+                major = menor;
+                menor = aux;
+                res = aux;
+            }   
+
+          return res; // TO DO
         }
     
         /*
