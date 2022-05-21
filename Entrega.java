@@ -425,13 +425,14 @@ class Entrega {
             }
 
             isAntis = true;
-            
-            int min = x;
-            for (int[] relx : rel) {
+                        
+            /*for (int[] relx : rel) {
                 if(relx[1] == min){
+                    System.out.println(relx[0] + ", " + relx[1]);
                     min = relx[0];
                 }
-            }
+            }*/
+            int min = a[0];
 
             isMin = (x == min);
 
@@ -460,7 +461,7 @@ class Entrega {
                 System.out.println(res);
                 return false;
             }
-            //Por revisar
+            //Creo que hecho
         }
 
         /*
@@ -472,7 +473,30 @@ class Entrega {
          * de menor a major.
          */
         static int[] exercici3(int[] dom, int[] codom, Function<Integer, Integer> f, int y) {
-            return new int[] {}; // TO DO
+
+            int c = 0;
+            for (int i : dom) {
+                if(y == f.apply(i)){
+                    c++;
+                }
+            }
+
+            int[] res = new int[c];
+
+            if(c == 0){
+                return res;
+            }else{
+                int ix = 0;
+                for (int i : dom) {
+                    if(y == f.apply(i)){
+                        res[ix] = i;
+                    }
+                }
+            }
+
+            Arrays.sort(res);
+
+            return res; // HECHO
         }
 
         /*
