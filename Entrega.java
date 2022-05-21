@@ -88,7 +88,7 @@ class Entrega {
         }
 
         /*
-         * És cert que ∃!x. ∀y. Q(y) -> P(x) ? 
+         * És cert que ∃!x. ∀y. Q(y) -> P(x) ?
          */
         static boolean exercici2(int[] universe, Predicate<Integer> p, Predicate<Integer> q) {
 
@@ -96,26 +96,26 @@ class Entrega {
             int contador = 0;
             int aux = 0;
 
-            for(int x = 0; x < universe.length; x++){
-                for(int y = 0; y < universe.length; y++){
-                    if(!(q.test(universe[y]) && (p.test(universe[x]) == false))){
+            for (int x = 0; x < universe.length; x++) {
+                for (int y = 0; y < universe.length; y++) {
+                    if (!(q.test(universe[y]) && (p.test(universe[x]) == false))) {
                         contador++;
                     }
                 }
 
-                if(contador == universe.length){
+                if (contador == universe.length) {
                     aux++;
                 }
                 contador = 0;
 
-                if(aux > 1){
+                if (aux > 1) {
                     res = false;
                     System.out.println("Ejercicio 2: " + res);
                     return res;
                 }
-                
+
             }
-            if(aux == 0){
+            if (aux == 0) {
                 res = false;
             }
             System.out.println("Ejercicio 2: " + res);
@@ -186,35 +186,35 @@ class Entrega {
             for (int i = 0; i < universe.length; i++) {
                 for (int y = 0; y < universe.length; y++) {
                     a = universe[i] * universe[y];
-    
+
                     if ((a % n) == (b % n)) {
                         flags[y] = true;
                         cont++;
                     }
                 }
-    
+
                 for (int k = 0; k < flags.length; k++) {
-    
+
                     if (flags[k] == true) {
                         aux++;
                     }
                 }
-    
+
                 if (aux != 1) {
                     esunic = false;
                 }
-    
+
                 // reiniciar los flags
                 for (int t = 0; t < flags.length; t++) {
                     flags[t] = false;
                 }
                 aux = 0;
-    
+
             }
-    
-            if((cont == universe.length) && (esunic) ){
+
+            if ((cont == universe.length) && (esunic)) {
                 res = true;
-            }else{
+            } else {
                 res = false;
             }
 
@@ -365,7 +365,102 @@ class Entrega {
          * Podeu soposar que `x` pertany a `a` i que `a` està ordenat de menor a major.
          */
         static boolean exercici2(int[] a, int[][] rel, int x) {
-            return false; // TO DO
+            boolean isRefl, isAntis, isTrans, isMin, res, isRel;
+            int c = 0;
+
+            for (int ax : a) {
+                for (int[] relx : rel) {
+                    if (ax == relx[0] && ax == relx[1]) {
+                        c++;
+                        break;
+                    }
+                }
+            }
+
+            isRefl = (c == a.length);
+
+            if (!isRefl) {
+                res = false;
+                System.out.println(res);
+                return res;
+            }
+            c = 0;
+            int c1 = 0;
+
+            for (int[] relx : rel) {
+                int xx = relx[0], yy = relx[1];
+                for (int[] rely : rel) {
+                    if (rely[0] == yy) {
+                        int zz = rely[1];
+                        c++;
+                        for (int[] relz : rel) {
+                            if (relz[0] == xx && relz[1] == zz) {
+                                c1++;
+                                break;
+                            }
+                        }
+                    }
+
+                }
+
+            }
+
+            isTrans = (c1 == c);
+
+            if(!isTrans){
+                res = false;
+                System.out.println(res);
+                return res;
+            }
+
+            for (int[] relx : rel) {
+                int xx = relx[0], yy = relx[1];
+                for (int[] rely : rel) {
+                    if((rely[0] == yy && rely[1] == xx) && yy != xx){
+                        res = false;
+                        System.out.println(res);
+                        return res;
+                    }
+                }
+            }
+
+            isAntis = true;
+            
+            int min = x;
+            for (int[] relx : rel) {
+                if(relx[1] == min){
+                    min = relx[0];
+                }
+            }
+
+            isMin = (x == min);
+
+            if(!isMin){
+                res = false;
+                System.out.println(res);
+                return res;
+            }
+
+            for (int[] relx : rel) {
+                if(!((relx[0] >= a[0] && relx[0] <= a[a.length-1]) && (relx[1] >= a[0] && relx[1] <= a[a.length-1]))){
+                    res = false;
+                    System.out.println(res);
+                    return res;
+                }
+            }
+
+            isRel = true;
+
+            if(isRefl && isTrans && isAntis && isMin && isRel){
+                res = true;
+                System.out.println(res);
+                return res;
+            }else{
+                res = false;
+                System.out.println(res);
+                return false;
+            }
+            //Por revisar
         }
 
         /*
@@ -511,113 +606,108 @@ class Entrega {
             int aux = -1;
             int major;
             int menor;
-     
-    
-            if(a > b){
+
+            if (a > b) {
                 major = a;
                 menor = b;
-            }else{
+            } else {
                 major = b;
                 menor = a;
             }
-            
-            while(aux != 0){
+
+            while (aux != 0) {
                 aux = major % menor;
                 major = menor;
-    
-                if(aux == 0){
-                    res =  menor;
+
+                if (aux == 0) {
+                    res = menor;
                 }
-    
-                menor = aux; 
-            }   
+
+                menor = aux;
+            }
 
             System.out.println("Ejercicio 1: " + res);
-    
-          return res; // HECHO
+
+            return res; // HECHO
         }
-    
+
         /*
          * Es cert que `a``x` + `b``y` = `c` té solució?.
          *
          * Podeu suposar que `a`, `b` i `c` són positius.
          */
         static boolean exercici2(int a, int b, int c) {
-            //veure si mcd(a,b)|c, si es divisor, te solució
+            // veure si mcd(a,b)|c, si es divisor, te solució
             boolean sol = false;
             int res = 0;
             int aux = -1;
             int major;
             int menor;
-     
-    
-            if(a > b){
+
+            if (a > b) {
                 major = a;
                 menor = b;
-            }else{
+            } else {
                 major = b;
                 menor = a;
             }
-            
-            while(aux != 0){
+
+            while (aux != 0) {
                 aux = major % menor;
                 major = menor;
-    
-                if(aux == 0){
-                    res =  menor;
+
+                if (aux == 0) {
+                    res = menor;
                 }
-    
-                menor = aux; 
-            }   
-            
-            if((c % res) == 0){
+
+                menor = aux;
+            }
+
+            if ((c % res) == 0) {
                 sol = true;
             }
 
             System.out.println("Ejercicio 2: " + sol);
-    
-          return sol; // HECHO
+
+            return sol; // HECHO
         }
-    
+
         /*
          * Quin es l'invers de `a` mòdul `n`?
          *
          * Retornau l'invers sempre entre 1 i `n-1`, en cas que no existeixi retornau -1
          */
         static int exercici3(int a, int n) {
-          return -1; // TO DO
+            return -1; // TO DO
         }
-    
+
         /*
-         * Aquí teniu alguns exemples i proves relacionades amb aquests exercicis (vegeu `main`)
+         * Aquí teniu alguns exemples i proves relacionades amb aquests exercicis (vegeu
+         * `main`)
          */
         static void tests() {
-          // Exercici 1
-          // `mcd(a,b)`
-    
-          assertThat(
-                  exercici1(2, 4) == 2
-          );
-    
-          assertThat(
-                  exercici1(1236, 984) == 12
-          );
-    
-          // Exercici 2
-          // `a``x` + `b``y` = `c` té solució?
-    
-          assertThat(
-                  exercici2(4,2,2)
-          );
-          assertThat(
-                  !exercici2(6,2,1)
-          );
-          // Exercici 3
-          // invers de `a` mòdul `n`
-          assertThat(exercici3(2, 5) == 3);
-          assertThat(exercici3(2, 6) == -1);
+            // Exercici 1
+            // `mcd(a,b)`
+
+            assertThat(
+                    exercici1(2, 4) == 2);
+
+            assertThat(
+                    exercici1(1236, 984) == 12);
+
+            // Exercici 2
+            // `a``x` + `b``y` = `c` té solució?
+
+            assertThat(
+                    exercici2(4, 2, 2));
+            assertThat(
+                    !exercici2(6, 2, 1));
+            // Exercici 3
+            // invers de `a` mòdul `n`
+            assertThat(exercici3(2, 5) == 3);
+            assertThat(exercici3(2, 6) == -1);
         }
-      }
+    }
 
     /*
      * Aquest mètode `main` conté alguns exemples de paràmetres i dels resultats que
@@ -630,8 +720,8 @@ class Entrega {
      * sigui `true`.
      */
     public static void main(String[] args) {
-        //Tema1.tests();
-        //Tema2.tests();
+        // Tema1.tests();
+        Tema2.tests();
         Tema3.tests();
     }
 
