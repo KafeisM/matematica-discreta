@@ -425,16 +425,16 @@ class Entrega {
             }
 
             isAntis = true;
-                        
-            /*for (int[] relx : rel) {
-                if(relx[1] == min){
-                    System.out.println(relx[0] + ", " + relx[1]);
-                    min = relx[0];
-                }
-            }*/
-            int min = a[0];
+            int min = x;
+            c = 0;
 
-            isMin = (x == min);
+            for (int[] relx : rel) {
+                if(relx[0] == min || relx[1] == min){
+                    c++;
+                }
+            }
+
+            isMin = (c == a.length);
 
             if(!isMin){
                 res = false;
