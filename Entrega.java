@@ -702,7 +702,27 @@ class Entrega {
          * Retornau l'invers sempre entre 1 i `n-1`, en cas que no existeixi retornau -1
          */
         static int exercici3(int a, int n) {
-            return -1; // TO DO
+            int aux;
+            int aux2;
+            int res = 0;
+            boolean trobat = false;
+            for (int b = 1; b < n; b++){
+                aux = a * b;
+                aux2 = aux % n;
+                if (aux2 == 1){
+                    trobat = true;
+                    res = b;
+                    break;
+                }
+            }
+            if (trobat){
+                System.out.println("Ejercicio 3: " + res);
+                return res;
+            } else {
+                System.out.println("Ejercicio 3: " + -1);
+                return -1;
+            }
+             // TO DO
         }
 
         /*
@@ -745,7 +765,7 @@ class Entrega {
      */
     public static void main(String[] args) {
         // Tema1.tests();
-        Tema2.tests();
+        //Tema2.tests();
         Tema3.tests();
     }
 
