@@ -516,6 +516,62 @@ class Entrega {
         static final int BIJECTIVE = INJECTIVE + SURJECTIVE;
 
         static int exercici4(int[] dom, int[] codom, Function<Integer, Integer> f) {
+            boolean noInyectiva = false; //indica si esa función NO es inyectiva
+            boolean noExhaustiva = false;
+
+            //mirar si inyectiva
+            for (int i = 0; i < dom.length; i++){
+                int x = dom[i];
+                for (int j = 0; j < dom.length; j++){
+                    int y = dom[j];
+                    if (i == j){
+                    } else{
+                        if (f.apply(x) == f.apply(y)){
+                            noInyectiva = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //mirar si exhaustiva
+            int aux = 0;
+            int aux2 = 0;
+            for (int i = 0; i < codom.length; i++){
+                int y = codom[i];
+                for (int j = 0; j < dom.length; j++){
+                    int x = dom[j];
+                    if (f.apply(x) == y){
+                        aux++;
+                    }
+
+                }
+                if (aux != 0){
+                    aux2++;
+                }
+                aux = 0;
+
+            }
+            if (aux2 != codom.length){
+                noExhaustiva = true;
+            }
+
+
+            //comprobar los resultados de los anteriores apartadoss y determinar res
+            if (!noInyectiva && !noExhaustiva){
+                System.out.println("Ej 4: " + BIJECTIVE);
+                return BIJECTIVE;
+            } else if (!noInyectiva && noExhaustiva){
+                System.out.println("Ej 4: " + INJECTIVE);
+                return INJECTIVE;
+            } else if (noInyectiva && !noExhaustiva){
+                System.out.println("Ej 4: " + SURJECTIVE);
+                return SURJECTIVE;
+            } else if(noInyectiva && noExhaustiva){
+                System.out.println("Ej 4: " + NOTHING_SPECIAL);
+                return NOTHING_SPECIAL;
+            }
+
             return -1; // TO DO
         }
 
@@ -765,8 +821,8 @@ class Entrega {
      */
     public static void main(String[] args) {
         // Tema1.tests();
-        //Tema2.tests();
-        Tema3.tests();
+        Tema2.tests();
+        //Tema3.tests();
     }
 
     static void assertThat(boolean b) {
