@@ -687,6 +687,8 @@ class Entrega {
             int major;
             int menor;
 
+            //mirar quin es el major de els 2 i assignar-ho
+
             if (a > b) {
                 major = a;
                 menor = b;
@@ -695,6 +697,7 @@ class Entrega {
                 menor = a;
             }
 
+            //mentre el residu sigui diferent de 0, anar aplicant el algoritme de euclides
             while (aux != 0) {
                 aux = major % menor;
                 major = menor;
@@ -718,6 +721,7 @@ class Entrega {
          */
         static boolean exercici2(int a, int b, int c) {
             // veure si mcd(a,b)|c, si es divisor, te solució
+            //per veure el mcd, aplicar el algoritme de euclides
             boolean sol = false;
             int res = 0;
             int aux = -1;
@@ -778,7 +782,7 @@ class Entrega {
                 System.out.println("Ejercicio 3: " + -1);
                 return -1;
             }
-             // TO DO
+             // HECHO
         }
 
         /*
@@ -820,9 +824,9 @@ class Entrega {
      * sigui `true`.
      */
     public static void main(String[] args) {
-        // Tema1.tests();
+        Tema1.tests();
         Tema2.tests();
-        //Tema3.tests();
+        Tema3.tests();
     }
 
     static void assertThat(boolean b) {
