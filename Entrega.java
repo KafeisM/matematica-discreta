@@ -824,8 +824,11 @@ class Entrega {
      * sigui `true`.
      */
     public static void main(String[] args) {
+        System.out.println("TEMA 1:");
         Tema1.tests();
+        System.out.println("TEMA 2: ");
         Tema2.tests();
+        System.out.println("TEMA 3: ");
         Tema3.tests();
     }
 
