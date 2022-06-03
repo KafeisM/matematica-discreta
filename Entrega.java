@@ -825,7 +825,34 @@ class Entrega {
          * Donada una matriu d'adjacencia `A` d'un graf no dirigit, digau si el graf es eulerià.
          */
         static boolean exercici2(int[][] A) {
-          return false; // TO DO
+            int grau = 0;
+            int aux = 0;
+
+            boolean noEuleria = false;
+            boolean res = false;
+
+                for(int x = 0; x < A.length && !noEuleria; x++){
+                    for(int y = 0; y < A[x].length && !noEuleria; y++ ){
+                        if(A[x][y] == 1){
+                            grau++;
+                        }
+                    }
+
+                    if(grau % 2 != 0){
+                        noEuleria = true;
+                    }
+                    grau = 0;
+                }
+
+            if(noEuleria){
+                res = false;
+            }else{
+                res = true;
+            }
+
+            System.out.println("Exercici 2 " + res);
+
+          return res; // TO DO
         }
     
         /*
@@ -857,7 +884,7 @@ class Entrega {
           assertThat(
                   exercici1(new int[][] { {0, 1, 0, 1}, {1, 0, 1, 1}, {0 , 1, 0, 1}, {1, 1, 1, 0}}) == new int[] {4, 5}
           );
-    
+          
           // Exercici 2
           // `Es eulerià?`
     
