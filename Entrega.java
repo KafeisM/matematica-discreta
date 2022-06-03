@@ -826,7 +826,6 @@ class Entrega {
          */
         static boolean exercici2(int[][] A) {
             int grau = 0;
-            int aux = 0;
 
             boolean noEuleria = false;
             boolean res = false;
@@ -852,7 +851,7 @@ class Entrega {
 
             System.out.println("Exercici 2 " + res);
 
-          return res; // TO DO
+          return res; // FET
         }
     
         /*
