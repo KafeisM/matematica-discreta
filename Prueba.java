@@ -5,7 +5,23 @@ public class Prueba {
         //System.out.println(Ejercicio4());
         //System.out.println(prueba());
        // System.out.println(exercici1(5639, 3829));
-       System.out.println(exercici2(6, 2, 1));
+       //System.out.println(exercici2(6, 2, 1));
+       System.out.println(exercici4(new int[][] { {0, 1, 0,0}, {1, 0, 1,1}, {0, 1, 0,1},{0,1,1,0}}));
+    }
+
+    static boolean exercici4(int[][] A) {
+        for (int i = 0; i < A.length; i++) {
+            int n = 0;
+            for (int j = 0; j < A.length; j++) {
+                if(A[i][j] == 1){
+                    n++;
+                }
+            }
+            if(n < 2){
+                return false;
+            }
+        }
+        return true; // TO DO
     }
 
     static boolean exercici2(int a, int b, int c) {
