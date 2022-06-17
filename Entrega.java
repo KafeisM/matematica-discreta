@@ -818,7 +818,16 @@ class Entrega {
          * Donada una matriu d'adjacencia `A` d'un graf no dirigit, retornau l'ordre i la mida del graf.
          */
         static int[] exercici1(int[][] A) {
-          return new int[]{}; // TO DO
+            int o = A.length, m = 0;
+            for (int j = 0; j < A.length; j++) {
+                for (int i = j+1; i < A.length; i++) {
+                    if(A[i][j] == 1){
+                        m++;
+                    }
+                }
+            }
+            System.out.println(m);
+          return new int[]{o,m}; // TO DO
         }
     
         /*
@@ -883,6 +892,7 @@ class Entrega {
           assertThat(
                   exercici1(new int[][] { {0, 1, 0, 1}, {1, 0, 1, 1}, {0 , 1, 0, 1}, {1, 1, 1, 0}}) == new int[] {4, 5}
           );
+          
           
           // Exercici 2
           // `Es eulerià?`
