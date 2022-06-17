@@ -864,7 +864,7 @@ class Entrega {
         }
     
         /*
-         * Donat `n` el número de fulles d'un arbre arrelat i `d` el nombre de fills dels nodes interiors,
+         * Donat `n` el número de fulles d'un arbre arrelat i `d` el nombre de fills dels nodes interiors, i de l'arrel,
          * retornau el nombre total de vèrtexos de l'arbre
          *
          */
@@ -886,11 +886,11 @@ class Entrega {
           // `ordre i mida`
     
           assertThat(
-                  exercici1(new int[][] { {0, 1, 0}, {1, 0, 1}, {0,1, 0}}) == new int[] {3, 3}
+            Arrays.equals(exercici1(new int[][] { {0, 1, 0}, {1, 0, 1}, {0,1, 0}}), new int[] {3, 2})
           );
     
           assertThat(
-                  exercici1(new int[][] { {0, 1, 0, 1}, {1, 0, 1, 1}, {0 , 1, 0, 1}, {1, 1, 1, 0}}) == new int[] {4, 5}
+            Arrays.equals(exercici1(new int[][] { {0, 1, 0, 1}, {1, 0, 1, 1}, {0 , 1, 0, 1}, {1, 1, 1, 0}}), new int[] {4, 5})
           );
           
           
@@ -911,10 +911,10 @@ class Entrega {
           // Exercici 4
           // `Conté algún cicle?`
           assertThat(
-                  !exercici4(new int[][] { {0, 1, 1}, {1, 0, 1}, {1, 1, 0}})
+                  exercici4(new int[][] { {0, 1, 1}, {1, 0, 1}, {1, 1, 0}})
           );
           assertThat(
-                  exercici4(new int[][] { {0, 1, 0}, {1, 0, 1}, {0, 1, 0}})
+                  !exercici4(new int[][] { {0, 1, 0}, {1, 0, 1}, {0, 1, 0}})
           );
     
         }
