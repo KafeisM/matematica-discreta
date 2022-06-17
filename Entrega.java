@@ -827,7 +827,7 @@ class Entrega {
                 }
             }
             System.out.println(m);
-          return new int[]{o,m}; // TO DO
+          return new int[]{o,m}; // HECHO
         }
     
         /*
@@ -876,7 +876,18 @@ class Entrega {
          * Donada una matriu d'adjacencia `A` d'un graf connex no dirigit, digau si el graf conté algún cicle.
          */
         static boolean exercici4(int[][] A) {
-          return false; // TO DO
+            for (int i = 0; i < A.length; i++) {
+                int n = 0;
+                for (int j = 0; j < A.length; j++) {
+                    if(A[i][j] == 1){
+                        n++;
+                    }
+                }
+                if(n < 2){
+                    return false;
+                }
+            }
+            return true; // TO DO
         }
         /*
          * Aquí teniu alguns exemples i proves relacionades amb aquests exercicis (vegeu `main`)
