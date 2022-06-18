@@ -876,18 +876,26 @@ class Entrega {
          * Donada una matriu d'adjacencia `A` d'un graf connex no dirigit, digau si el graf conté algún cicle.
          */
         static boolean exercici4(int[][] A) {
-            for (int i = 0; i < A.length; i++) {
-                int n = 0;
-                for (int j = 0; j < A.length; j++) {
+            boolean cond = true;
+
+            int V = A.length;
+            int E = V-1;
+            int sum = 0;
+            
+            for(int i = 0; i < A.length; i++){
+                for(int j = 0; j < A.length; j++){
                     if(A[i][j] == 1){
-                        n++;
+                        sum++;
                     }
-                }
-                if(n < 2){
-                    return false;
-                }
+                } 
             }
-            return true; // TO DO
+    
+            if((2*E) == sum){
+                cond = false;
+            }
+          
+            System.out.println(cond);
+            return cond; // TO DO
         }
         /*
          * Aquí teniu alguns exemples i proves relacionades amb aquests exercicis (vegeu `main`)

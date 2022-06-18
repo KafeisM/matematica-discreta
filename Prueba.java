@@ -6,22 +6,33 @@ public class Prueba {
         //System.out.println(prueba());
        // System.out.println(exercici1(5639, 3829));
        //System.out.println(exercici2(6, 2, 1));
-       System.out.println(exercici4(new int[][] { {0, 1, 0,0}, {1, 0, 1,1}, {0, 1, 0,1},{0,1,1,0}}));
+       System.out.println(exercici4(new int[][] { {0, 1, 0,0}, {1, 0, 1,1}, {0, 1, 0,1} , {0,1,1,0}}));
     }
 
+    //no conte un cicle si es arbre, es arbri ssi
+    // E = V-1
+    // 2E = SUM(d(u))
     static boolean exercici4(int[][] A) {
-        for (int i = 0; i < A.length; i++) {
-            int n = 0;
-            for (int j = 0; j < A.length; j++) {
+        boolean cond = true;
+
+        int V = A.length;
+        int E = V-1;
+        int sum = 0;
+        
+        for(int i = 0; i < A.length; i++){
+            for(int j = 0; j < A.length; j++){
                 if(A[i][j] == 1){
-                    n++;
+                    sum++;
                 }
-            }
-            if(n < 2){
-                return false;
-            }
+            } 
         }
-        return true; // TO DO
+
+        if((2*E) == sum){
+            cond = false;
+        }
+      
+        System.out.println(cond);
+        return cond; // TO DO
     }
 
     static boolean exercici2(int a, int b, int c) {
