@@ -124,7 +124,7 @@ class Entrega {
                 res = false;
             }
             System.out.println("Ejercicio 2: " + res);
-            return res; // TO DO
+            return res; // HECHO
         }
 
         /*
@@ -592,7 +592,7 @@ class Entrega {
                 return NOTHING_SPECIAL;
             }
 
-            return -1; // TO DO
+            return -1; // HECHO
         }
 
         /*
