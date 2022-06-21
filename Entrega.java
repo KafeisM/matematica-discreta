@@ -70,6 +70,7 @@ class Entrega {
                 Predicate<Integer> r) {
 
             boolean res = true;
+            //Buscamos el caso de que el predicado P sea cierto ya que en una implicación 1 -> 0 es false, entonces buscamos ese caso.
             for (int x : universe) {
                 for (int y : universe) {
                     if (p.test(x, y)) {
@@ -189,7 +190,6 @@ class Entrega {
             boolean esunic = true;
 
             // operacio com a ≡ b (mod n) <---> n|(a-b) <---> a mod n == b mod n
-            // a i b son elements del univers, per tot x existeix un unic y que ho compleix
             int a = 0;
             int b = 1;
 
@@ -203,7 +203,6 @@ class Entrega {
                     }
                 }
 
-                //comprovam que nomes es compleix per un unic valor y
                 for (int k = 0; k < flags.length; k++) {
 
                     if (flags[k] == true) {
@@ -211,7 +210,6 @@ class Entrega {
                     }
                 }
 
-                //si no es unic ho posam, que per aquella x hi ha mes de un y
                 if (aux != 1) {
                     esunic = false;
                 }
@@ -719,8 +717,7 @@ class Entrega {
                 menor = a;
             }
 
-            //mentre el residu sigui diferent de 0, anar aplicant el algoritme de euclides,
-            //el darrer residu, abans de que doni 0, sera el máxim comu divisor
+            //mentre el residu sigui diferent de 0, anar aplicant el algoritme de euclides
             while (aux != 0) {
                 aux = major % menor;
                 major = menor;
@@ -800,6 +797,7 @@ class Entrega {
             }
             if (trobat){ //si s'ha trobat, retornam true, sino fals
                 if(res > n){
+                    res = res%n;
                 }
                 System.out.println("Ejercicio 3: " + res);
                 return res;
@@ -833,7 +831,7 @@ class Entrega {
                     !exercici2(6, 2, 1));
             // Exercici 3
             // invers de `a` mòdul `n`
-            assertThat(exercici3(2, 5) == 3);
+            assertThat(exercici3(4, 15) == 4);
             assertThat(exercici3(2, 6) == -1);
         }
     }
