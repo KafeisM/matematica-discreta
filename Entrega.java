@@ -98,25 +98,28 @@ class Entrega {
             int aux = 0;
 
             for (int x = 0; x < universe.length; x++) {
+                //cercam un cas (amb la mateixa x) en el que la implicació sigui 1 -> 0, per determinar que es fals
                 for (int y = 0; y < universe.length; y++) {
                     if (!(q.test(universe[y]) && (p.test(universe[x]) == false))) {
+                        //si això passa no farem res, en cas contrari (que la implicació sigui correcta) incrementarem un comptador
                         contador++;
                     }
                 }
 
                 if (contador == universe.length) {
+                    //si el comptador es igual a la dimensió del univers, es compleix per tot el univers amb una única x
                     aux++;
                 }
-                contador = 0;
+                contador = 0; //per probar la resta de x, resetetjam el comptador
 
-                if (aux > 1) {
+                if (aux > 1) { //si es compleix més d'un pic, vol dir que no és una única x. Per tant, fals
                     res = false;
                     System.out.println("Ejercicio 2: " + res);
                     return res;
                 }
 
             }
-            if (aux == 0) {
+            if (aux == 0) { //si no es compleix cap pic, també és fals.
                 res = false;
             }
             System.out.println("Ejercicio 2: " + res);
@@ -767,16 +770,16 @@ class Entrega {
             int aux2;
             int res = 0;
             boolean trobat = false;
-            for (int b = 1; b < n; b++){
+            for (int b = 1; b < n; b++){ //aquest bucle realitza una cerca de la longitud del mòdul provant quin és l'invèrs
                 aux = a * b;
-                aux2 = aux % n;
+                aux2 = aux % n; //treim el residu del nombre obtingut i miram si es = 1
                 if (aux2 == 1){
                     trobat = true;
                     res = b;
                     break;
                 }
             }
-            if (trobat){
+            if (trobat){ //si s'ha trobat, retornam true, sino fals
                 if(res > n){
                     res = res%n;
                 }
@@ -886,7 +889,7 @@ class Entrega {
             //quan tenim els nombres de nodes interiors, els sumam a l'arrel i a les fulles per obtenir tots els vertexs
             int vertexs = numNodes + 1 + n;
             System.out.println("Exercici 3: " + vertexs);
-            return vertexs; // TO DO
+            return vertexs; // HECHO
         }
     
         /*
