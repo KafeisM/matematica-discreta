@@ -70,20 +70,20 @@ class Entrega {
                 Predicate<Integer> r) {
 
             boolean res = true;
-
             for (int x : universe) {
                 for (int y : universe) {
                     if (p.test(x, y)) {
                         res = (q.test(x) && r.test(y));
-
+                        //si ha sido así, entonces vemos si Q^R es falso
                         if (!res) {
+                            //si lo es devolvemos falso
                             System.out.println("Ejercicio 1: " + res);
                             return res;
                         }
                     }
                 }
             }
-
+            //Si no ha sido falso en ningún momento, entonces será cierto si ha ha pasado por todas las comparaciones sin ser falso.
             System.out.println("Ejercicio 1: " + res);
             return res; // HECHO
         }
@@ -134,15 +134,19 @@ class Entrega {
          * que cada un d'ells està ordenat de menor a major.
          */
         static boolean exercici3(int[][] universe) {
+            //El valor de retorno será negado ya que hay una negación antes de toda la expresión.
             boolean existe = false;
 
             boolean res = false;
+            //La expresión se tiene que cumplir para cualquier subconjunto y, y para ese subconjunto y tiene que haber al menos una x que cumpla la expresión
             for (int[] y : universe) {
                 for (int[] x : universe) {
+                    //Si el tamaño de y > al tamaño de x no puede pasar que y ⊆ x
                     if (x.length < y.length) {
                         existe = false;
                     } else {
                         int n = 0;
+                        //Ahora pasaremos a verificar si para esta x, y ⊆ x, de ser así, se pasará a la siguiente iteración de y, sino, se seguirá revisando otra x.
                         for (int i = 0; i < y.length && n != y.length; i++) {
                             for (int j = 0; j < x.length; j++) {
                                 if (y[i] == x[j]) {
@@ -158,6 +162,7 @@ class Entrega {
                         }
                     }
                 }
+                //Al final de cada iteración de y, si no ha habido ninguna x que haya cumplido la expresión entonces el resultado será falso.
                 if (!existe) {
                     res = false;
                     System.out.println("Ejercicio 3: " + !res);
@@ -211,7 +216,7 @@ class Entrega {
                     esunic = false;
                 }
 
-                // reiniciar els flags per la seguent iteracio de x
+                // reiniciar els flags
                 for (int t = 0; t < flags.length; t++) {
                     flags[t] = false;
                 }
@@ -323,6 +328,9 @@ class Entrega {
         static boolean exercici1(int[] a, int[][] p) {
             int tam = a.length;
             boolean[] usado = new boolean[tam];
+            //Para que p sea una partición de a, no puede haber valores repetidos en los subconjuntos, tienen que abarcar todos los valores de a, y el valor de un n en un subconjunto,
+            //debe de estar entre el primer valor y el último al estar a ordenado.
+            //Creamos un array de booleanos que dicen si se ha usado ese número para un subconjunto.
             for (int i = 0; i < tam; i++) {
                 usado[i] = false;
             }
@@ -333,9 +341,11 @@ class Entrega {
                 boolean existe = false;
                 for (int[] px : p) {
                     for (int ppx : px) {
+                        //Si el numero a comparar no esta entre el mínimo y el máximo de a, entonces devolvemos falso
                         if (ppx >= min && ppx <= max) {
                             if (ax == ppx) {
                                 existe = true;
+                                //Si el valor no está usado entonces ese numero pasará a estar usado, sino entonces devolveremos falso
                                 if (!usado[i]) {
                                     usado[i] = true;
                                 } else {
@@ -352,6 +362,7 @@ class Entrega {
                         }
                     }
                 }
+                //Por último si el valor no ha aparecido en ningún subconjunto entonces devolveremos falso
                 if (!existe) {
                     res = false;
                     System.out.println(res);
@@ -359,7 +370,7 @@ class Entrega {
                 }
                 i++;
             }
-
+            //Si ha pasado por todas las comparaciones y no ha devuelto falso, entonces devovleremos verdadero.
             res = true;
             System.out.println(res);
             return res; // HECHO
@@ -372,9 +383,13 @@ class Entrega {
          * Podeu soposar que `x` pertany a `a` i que `a` està ordenat de menor a major.
          */
         static boolean exercici2(int[] a, int[][] rel, int x) {
+            //Para que la relación sea de orden parcial tiene que ser Reflexiva, Antisimétrica, Transitiva.
+            //A parte x tendrá que estar por lo menos una vez con cada a[i].
             boolean isRefl, isAntis, isTrans, isMin, res, isRel;
             int c = 0;
-
+            
+            //Aqui comprobaremos si rel es reflexiva, si un contador c, que se sumará en uno si los valores del subconjunto de la relación son iguales, es igual al tamaño del 
+            //array 'a', entonces es reflexiva.
             for (int ax : a) {
                 for (int[] relx : rel) {
                     if (ax == relx[0] && ax == relx[1]) {
@@ -468,7 +483,7 @@ class Entrega {
                 System.out.println(res);
                 return false;
             }
-            //HECHO
+            //Creo que hecho
         }
 
         /*
@@ -785,7 +800,6 @@ class Entrega {
             }
             if (trobat){ //si s'ha trobat, retornam true, sino fals
                 if(res > n){
-                    res = res % n;
                 }
                 System.out.println("Ejercicio 3: " + res);
                 return res;
