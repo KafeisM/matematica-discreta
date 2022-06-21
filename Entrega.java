@@ -198,6 +198,7 @@ class Entrega {
                     }
                 }
 
+                //comprovam que nomes es compleix per un unic valor y
                 for (int k = 0; k < flags.length; k++) {
 
                     if (flags[k] == true) {
@@ -205,11 +206,12 @@ class Entrega {
                     }
                 }
 
+                //si no es unic ho posam, que per aquella x hi ha mes de un y
                 if (aux != 1) {
                     esunic = false;
                 }
 
-                // reiniciar els flags
+                // reiniciar els flags per la seguent iteracio de x
                 for (int t = 0; t < flags.length; t++) {
                     flags[t] = false;
                 }
