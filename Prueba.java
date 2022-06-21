@@ -6,7 +6,23 @@ public class Prueba {
         //System.out.println(prueba());
        // System.out.println(exercici1(5639, 3829));
        //System.out.println(exercici2(6, 2, 1));
-       System.out.println(exercici4(new int[][] { {0, 1, 0,0}, {1, 0, 1,1}, {0, 1, 0,1} , {0,1,1,0}}));
+      // System.out.println(exercici4(new int[][] { {0, 1, 0,0}, {1, 0, 1,1}, {0, 1, 0,1} , {0,1,1,0}}));
+      System.out.println(exercici3(9, 3));
+    }
+
+
+    static int exercici3(int n, int d) {
+        //si cada node interior té d fills, el seu grau serà de d + 1, ja que també tenen un pare
+        int grau = d + 1;
+        int numNodes;
+
+        //primer hem de conseguir el nombre de nodes interiors
+        numNodes = ((2*n) - (n + 2)) / (grau - 2);
+        
+        //quan tenim els nombres de nodes interiors, els sumam a l'arrel i a les fulles per obtenir tots els vertexs
+        int vertexs = numNodes + 1 + n;
+        System.out.println("Exercici 3: " + vertexs);
+        return vertexs; // TO DO
     }
 
     //no conte un cicle si es arbre, es arbri ssi
