@@ -165,7 +165,7 @@ class Entrega {
 
             }
             System.out.println("Ejercicio 3: " + !res);
-            return !res; // POR REVISAR
+            return !res; // HECHO
 
         }
 
@@ -181,6 +181,7 @@ class Entrega {
             boolean esunic = true;
 
             // operacio com a ≡ b (mod n) <---> n|(a-b) <---> a mod n == b mod n
+            // a i b son elements del univers, per tot x existeix un unic y que ho compleix
             int a = 0;
             int b = 1;
 
@@ -462,7 +463,7 @@ class Entrega {
                 System.out.println(res);
                 return false;
             }
-            //Creo que hecho
+            //HECHO
         }
 
         /*
@@ -698,7 +699,8 @@ class Entrega {
                 menor = a;
             }
 
-            //mentre el residu sigui diferent de 0, anar aplicant el algoritme de euclides
+            //mentre el residu sigui diferent de 0, anar aplicant el algoritme de euclides,
+            //el darrer residu, abans de que doni 0, sera el máxim comu divisor
             while (aux != 0) {
                 aux = major % menor;
                 major = menor;
@@ -778,7 +780,7 @@ class Entrega {
             }
             if (trobat){
                 if(res > n){
-                    res = res%n;
+                    res = res % n;
                 }
                 System.out.println("Ejercicio 3: " + res);
                 return res;
@@ -812,7 +814,7 @@ class Entrega {
                     !exercici2(6, 2, 1));
             // Exercici 3
             // invers de `a` mòdul `n`
-            assertThat(exercici3(4, 15) == 4);
+            assertThat(exercici3(2, 5) == 3);
             assertThat(exercici3(2, 6) == -1);
         }
     }
