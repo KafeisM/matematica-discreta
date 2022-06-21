@@ -205,7 +205,7 @@ class Entrega {
                     esunic = false;
                 }
 
-                // reiniciar los flags
+                // reiniciar els flags
                 for (int t = 0; t < flags.length; t++) {
                     flags[t] = false;
                 }
@@ -777,6 +777,9 @@ class Entrega {
                 }
             }
             if (trobat){
+                if(res > n){
+                    res = res%n;
+                }
                 System.out.println("Ejercicio 3: " + res);
                 return res;
             } else {
@@ -809,7 +812,7 @@ class Entrega {
                     !exercici2(6, 2, 1));
             // Exercici 3
             // invers de `a` mòdul `n`
-            assertThat(exercici3(2, 5) == 3);
+            assertThat(exercici3(4, 15) == 4);
             assertThat(exercici3(2, 6) == -1);
         }
     }
@@ -837,6 +840,8 @@ class Entrega {
         static boolean exercici2(int[][] A) {
             int grau = 0;
 
+            //perque un  graf sigui euleria ha de tenir tots els nodes grau parell
+            //per tant si ens donen la matriu de adjacencia, cada fila ens indica el grau de aquell node
             boolean noEuleria = false;
             boolean res = false;
 
@@ -847,6 +852,7 @@ class Entrega {
                         }
                     }
 
+                    //si el un grau no es parell ja surt i retornara fals
                     if(grau % 2 != 0){
                         noEuleria = true;
                     }
@@ -861,7 +867,7 @@ class Entrega {
 
             System.out.println("Exercici 2 " + res);
 
-          return res; // FET
+          return res; // HECHO
         }
     
         /*
@@ -887,26 +893,32 @@ class Entrega {
          * Donada una matriu d'adjacencia `A` d'un graf connex no dirigit, digau si el graf conté algún cicle.
          */
         static boolean exercici4(int[][] A) {
-            boolean cond = true;
+            //un arbre es un graf conex aciclic, per tant si confirmam que es unn arbre, ja sabrem que no conte cap cicle
+            //condicio per ser arbre:
+            //1. E(G) = V(G) - 1
+            //2. 2*E = SUM(d(u)) 
 
-            int V = A.length;
-            int E = V-1;
+            boolean cond = true;
+            int V = A.length; // el numero de nodes sera el nombre de files de la matriu
+
+            int E = V-1;    
             int sum = 0;
             
             for(int i = 0; i < A.length; i++){
                 for(int j = 0; j < A.length; j++){
                     if(A[i][j] == 1){
-                        sum++;
+                        sum++; //sumatori de els graus de els nodes
                     }
                 } 
             }
-    
+
+            //si es cumpleix que es arbre, no contindra cicle
             if((2*E) == sum){
                 cond = false;
             }
           
             System.out.println(cond);
-            return cond; // TO DO
+            return cond; // HECHO
         }
         /*
          * Aquí teniu alguns exemples i proves relacionades amb aquests exercicis (vegeu `main`)
