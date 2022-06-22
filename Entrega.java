@@ -387,7 +387,7 @@ class Entrega {
             int c = 0;
             
             //Aqui comprobaremos si rel es reflexiva, si un contador c, que se sumará en uno si los valores del subconjunto de la relación son iguales, es igual al tamaño del 
-            //array 'a', entonces es reflexiva.
+            //array 'a', entonces, es reflexiva.
             for (int ax : a) {
                 for (int[] relx : rel) {
                     if (ax == relx[0] && ax == relx[1]) {
@@ -407,13 +407,20 @@ class Entrega {
             c = 0;
             int c1 = 0;
 
+            //Aqui revisaremos la transitividad.
+            
             for (int[] relx : rel) {
+                //Guardamos los valores del subconjunto que se está iterando
                 int xx = relx[0], yy = relx[1];
                 for (int[] rely : rel) {
+                    //Si el segundo valor es el primero de otro, entonces se guardará el segundo valor de este último, aumentaremos un contador que significará que puede haber una
+                    //transición
                     if (rely[0] == yy) {
                         int zz = rely[1];
                         c++;
                         for (int[] relz : rel) {
+                            //Si encontramos un conjunto en donde el primer valor sea el primero guardado del primer subconjunto iterado, y el segundo es el último guardado
+                            //entonces aumentaremos en uno el contador de transiciones.
                             if (relz[0] == xx && relz[1] == zz) {
                                 c1++;
                                 break;
@@ -424,7 +431,7 @@ class Entrega {
                 }
 
             }
-
+            //Si el contador de transiciones es igual al contador que cuento las posibles transiciones, entonces es transitiva.
             isTrans = (c1 == c);
 
             if(!isTrans){
@@ -433,6 +440,8 @@ class Entrega {
                 return res;
             }
 
+            //Aqui iteraremos los subconjuntos e intentaremos encontrar un subconjunto en donde el primero valor del primero, es el segundo y el segundo del primero, es el 
+            //primero, entonces devolveremos falso ya que quiere decir que no es antisimétrica.
             for (int[] relx : rel) {
                 int xx = relx[0], yy = relx[1];
                 for (int[] rely : rel) {
@@ -448,6 +457,8 @@ class Entrega {
             int min = x;
             c = 0;
 
+            //Para comprobar que sea mínimo la 'x', miraremos si está en cada uno de los subconjuntos y aumentaremos un contador en caso de ser así.
+            //isMin será cierto si el contador indica el mismo número que la longitud de a.
             for (int[] relx : rel) {
                 if(relx[0] == min || relx[1] == min){
                     c++;
@@ -462,6 +473,7 @@ class Entrega {
                 return res;
             }
 
+            //También compararemos todos los valores de los subconjuntos para cerciorarnos de que están en a.
             for (int[] relx : rel) {
                 if(!((relx[0] >= a[0] && relx[0] <= a[a.length-1]) && (relx[1] >= a[0] && relx[1] <= a[a.length-1]))){
                     res = false;
@@ -472,6 +484,7 @@ class Entrega {
 
             isRel = true;
 
+            //Si todas las propiedades son ciertas pues devolveremos cierto
             if(isRefl && isTrans && isAntis && isMin && isRel){
                 res = true;
                 System.out.println(res);
@@ -481,7 +494,7 @@ class Entrega {
                 System.out.println(res);
                 return false;
             }
-            //Creo que hecho
+            
         }
 
         /*
@@ -493,7 +506,9 @@ class Entrega {
          * de menor a major.
          */
         static int[] exercici3(int[] dom, int[] codom, Function<Integer, Integer> f, int y) {
-
+            //Aqui crearemos el tamaño del array que devolveremos.
+            //Para hacerlo cada vez que la y sea igual a la f(dom[i]), quiere decir que i será la antiimagen. Ahora solo aumentaremos un contador si esto pasa.
+            //Este contador lo usaremos como tamaño al declarar el array.
             int c = 0;
             for (int i : dom) {
                 if(y == f.apply(i)){
@@ -506,6 +521,7 @@ class Entrega {
             if(c == 0){
                 return res;
             }else{
+                //Haremos el mismo proceso de antes, pero ahora si ocurre la condición anterior, guardaremos dicha antiimagen en el array que devolveremos.
                 int ix = 0;
                 for (int i : dom) {
                     if(y == f.apply(i)){
