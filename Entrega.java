@@ -228,7 +228,7 @@ class Entrega {
                 res = false;
             }
 
-            System.out.println("Ejercicio 4:" + res);
+            System.out.println("Ejercicio 4: " + res);
             return res;
         }
 
@@ -348,14 +348,14 @@ class Entrega {
                                     usado[i] = true;
                                 } else {
                                     res = false;
-                                    System.out.println(res);
+                                    System.out.println("Ejercicio 1: " + res);
                                     return res;
                                 }
                                 break;
                             }
                         } else {
                             res = false;
-                            System.out.println(res);
+                            System.out.println("Ejercicio 1: " + res);
                             return res;
                         }
                     }
@@ -363,14 +363,14 @@ class Entrega {
                 //Por último si el valor no ha aparecido en ningún subconjunto entonces devolveremos falso
                 if (!existe) {
                     res = false;
-                    System.out.println(res);
+                    System.out.println("Ejercicio 1: " + res);
                     return res;
                 }
                 i++;
             }
             //Si ha pasado por todas las comparaciones y no ha devuelto falso, entonces devovleremos verdadero.
             res = true;
-            System.out.println(res);
+            System.out.println("Ejercicio 1: " + res);
             return res; // HECHO
         }
 
@@ -401,7 +401,7 @@ class Entrega {
 
             if (!isRefl) {
                 res = false;
-                System.out.println(res);
+                System.out.println("Ejercicio 2: " + res);
                 return res;
             }
             c = 0;
@@ -436,7 +436,7 @@ class Entrega {
 
             if(!isTrans){
                 res = false;
-                System.out.println(res);
+                System.out.println("Ejercicio 2: " + res);
                 return res;
             }
 
@@ -447,7 +447,7 @@ class Entrega {
                 for (int[] rely : rel) {
                     if((rely[0] == yy && rely[1] == xx) && yy != xx){
                         res = false;
-                        System.out.println(res);
+                        System.out.println("Ejercicio 2: " + res);
                         return res;
                     }
                 }
@@ -469,7 +469,7 @@ class Entrega {
 
             if(!isMin){
                 res = false;
-                System.out.println(res);
+                System.out.println("Ejercicio 2: " + res);
                 return res;
             }
 
@@ -477,7 +477,7 @@ class Entrega {
             for (int[] relx : rel) {
                 if(!((relx[0] >= a[0] && relx[0] <= a[a.length-1]) && (relx[1] >= a[0] && relx[1] <= a[a.length-1]))){
                     res = false;
-                    System.out.println(res);
+                    System.out.println("Ejercicio 2: " + res);
                     return res;
                 }
             }
@@ -487,11 +487,11 @@ class Entrega {
             //Si todas las propiedades son ciertas pues devolveremos cierto
             if(isRefl && isTrans && isAntis && isMin && isRel){
                 res = true;
-                System.out.println(res);
+                System.out.println("Ejercicio 2: " + res);
                 return res;
             }else{
                 res = false;
-                System.out.println(res);
+                System.out.println("Ejercicio 2: " + res);
                 return false;
             }
             
@@ -531,7 +531,11 @@ class Entrega {
             }
 
             Arrays.sort(res);
-
+            System.out.print("Ejercicio 3: ");
+            for (int i : res) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
             return res; // HECHO
         }
 
@@ -595,16 +599,16 @@ class Entrega {
 
             //comprobar los resultados de los anteriores apartadoss y determinar res
             if (!noInyectiva && !noExhaustiva){
-                System.out.println("Ej 4: " + BIJECTIVE);
+                System.out.println("Ejercicio 4: " + BIJECTIVE);
                 return BIJECTIVE;
             } else if (!noInyectiva && noExhaustiva){
-                System.out.println("Ej 4: " + INJECTIVE);
+                System.out.println("Ejercicio 4: " + INJECTIVE);
                 return INJECTIVE;
             } else if (noInyectiva && !noExhaustiva){
-                System.out.println("Ej 4: " + SURJECTIVE);
+                System.out.println("Ejercicio 4: " + SURJECTIVE);
                 return SURJECTIVE;
             } else if(noInyectiva && noExhaustiva){
-                System.out.println("Ej 4: " + NOTHING_SPECIAL);
+                System.out.println("Ejercicio 4: " + NOTHING_SPECIAL);
                 return NOTHING_SPECIAL;
             }
 
@@ -869,6 +873,8 @@ class Entrega {
                     }
                 }
             }
+            
+            System.out.println("Ejercicio 1: " + o + " " + m);
           return new int[]{o,m}; // HECHO
         }
     
@@ -903,7 +909,7 @@ class Entrega {
                 res = true;
             }
 
-            System.out.println("Exercici 2 " + res);
+            System.out.println("Ejercicio 2 " + res);
 
           return res; // HECHO
         }
@@ -923,7 +929,7 @@ class Entrega {
             
             //quan tenim els nombres de nodes interiors, els sumam a l'arrel i a les fulles per obtenir tots els vertexs
             int vertexs = numNodes + 1 + n;
-            System.out.println("Exercici 3: " + vertexs);
+            System.out.println("Ejercicio 3: " + vertexs);
             return vertexs; // HECHO
         }
     
@@ -955,7 +961,7 @@ class Entrega {
                 cond = false;
             }
           
-            System.out.println(cond);
+            System.out.println("Ejercicio 4: " + cond);
             return cond; // HECHO
         }
         /*
