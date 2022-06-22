@@ -841,15 +841,18 @@ class Entrega {
          * Donada una matriu d'adjacencia `A` d'un graf no dirigit, retornau l'ordre i la mida del graf.
          */
         static int[] exercici1(int[][] A) {
+            //El orden va a ser la medida del array bidimensional A, es decir si la matriz es nxn, el orden es n.
+            //Para la medida del grafo solo revisaremos los números por abajo de la diagonal, es decir, el triángulo inferior de la matriz ya que esta es simétrica.
+            //La suma de todas las veces que salga 1 será la medida del grafo.
             int o = A.length, m = 0;
             for (int j = 0; j < A.length; j++) {
                 for (int i = j+1; i < A.length; i++) {
+                    //Si A[i][j] es uno, (si hay una arista), sumamos el contador de aristas.
                     if(A[i][j] == 1){
                         m++;
                     }
                 }
             }
-            System.out.println(m);
           return new int[]{o,m}; // HECHO
         }
     
